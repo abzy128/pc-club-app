@@ -1,6 +1,7 @@
 <template>
   <h1>PC Club Application</h1>
-  <p></p>
+  <p>Hello</p>
+  <input name="lol"/>
 </template>
 
 <script setup>
