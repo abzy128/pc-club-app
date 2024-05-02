@@ -28,5 +28,14 @@
 
 import { createApp } from 'vue';
 import App from './App.vue';
+import router from './routes/router'
+import components from './components/UI'
+import './index.css'
 
-createApp(App).mount('#app');
+const app = createApp(App)
+
+components.forEach(element => {
+    app.component(element.name, element);
+});
+
+app.use(router).mount('#app');

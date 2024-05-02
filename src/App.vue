@@ -1,9 +1,10 @@
 <template>
-  <h1>PC Club Application</h1>
-  <p>Hello</p>
-  <input name="lol"/>
+  <RouterView/>
 </template>
 
-<script setup>
-console.log("test");
+<script>
+import { RouterLink, RouterView } from 'vue-router'
+export default{
+
+}
 </script>
