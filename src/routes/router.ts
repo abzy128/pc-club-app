@@ -1,9 +1,13 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
 
-import LoginForm from '../components/LoginForm.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import Main from '../views/Main.vue'
 
 const routes = [
-  { path: '/', component: LoginForm },
+  { path: '/', component: Main},
+  { path: '/login', component: Login},
+  { path: '/register', component: Register},
 ]
 
 const router = createRouter({

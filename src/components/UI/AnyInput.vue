@@ -5,7 +5,7 @@
         :placeholder="ph"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)" 
-        class=""
+        class="w-full"
         >
     </div>
 </template>
@@ -33,7 +33,7 @@ input{
 }
 
 input:focus{
-    box-shadow: 2px 2px 10px 3px #f40909;
+    box-shadow: 2px 2px 10px 3px #5512fb;
 }
     
 </style>

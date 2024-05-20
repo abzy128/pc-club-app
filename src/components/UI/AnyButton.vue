@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button>
+        <button class="p-3">
             <slot></slot>
         </button>
     </div>
@@ -23,6 +23,6 @@ button{
 
 button:hover{
 
-    box-shadow: 0px 0px 7px 3px #f40909;
+    box-shadow: 0px 0px 7px 3px #5512fb;
 }
 </style>
