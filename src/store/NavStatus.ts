@@ -2,7 +2,7 @@ import {defineStore} from 'pinia';
 import {ref} from 'vue'
 
 export const useNavStatusStore = defineStore("NavStatusStore", () => {
-    let steam = ref(false), riot = ref(true), epic = ref(false);
+    let steam = ref(false), riot = ref(true), epic = ref(false), settings = ref(false);
 
     function actSteam(){
         steam['value'] = true;
@@ -22,5 +22,16 @@ export const useNavStatusStore = defineStore("NavStatusStore", () => {
         epic['value'] = true;
     }
 
-    return {steam, riot, epic, actEpic, actRiot, actSteam}
+    function actTools(){
+        steam['value'] = false;
+        riot['value'] = false;
+        epic['value'] = false;
+    }
+
+    function actSettings(){
+        console.log("done")
+        settings['value'] = !settings['value'];
+    }
+
+    return {steam, riot, epic, settings, actEpic, actRiot, actSteam, actTools, actSettings}
 })

@@ -17,11 +17,20 @@
             </div>
         </div>
     </div>
-    <div v-else>
+    <div v-else-if="epic">
         <div class="grid grid-cols-4">
             <div v-for="game in gameEpic" :key="game.id">
                 <div>
                         <MainItem :link="game.link" :name="game.name"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-else>
+        <div class="grid grid-cols-4">
+            <div v-for="tool in tools" :key="tool.id">
+                <div>
+                        <MainItem :link="tool.link" :name="tool.name"/>
                 </div>
             </div>
         </div>
@@ -71,13 +80,24 @@ export default {
                 link: "https://m.media-amazon.com/images/M/MV5BNmNhM2NjMTgtNmIyZC00ZmVjLTk4YWItZmZjNGY2NThiNDhkXkEyXkFqcGdeQXVyODU4MDU1NjU@._V1_FMjpg_UX1000_.jpg",
                 name: "Fortnite"
             },
+        ], tools = [
+            {
+                id: 4,
+                link: "https://cdn2.steamgriddb.com/grid/1974a767627527a2f88ea3f2818676d7.png",
+                name: "Discord"
+            },
+            {
+                id: 5,
+                link: "https://1000logos.net/wp-content/uploads/2017/08/Chrome-emblem.jpg",
+                name: "Chrome"
+            }
         ]
         
         let NavStatusStore = useNavStatusStore();
 
         const {steam, riot, epic} = storeToRefs(NavStatusStore);
 
-        return {gameSteam,gameRiot,gameEpic, steam, riot, epic}
+        return {gameSteam,gameRiot,gameEpic, tools, steam, riot, epic}
     }
 }
 </script>

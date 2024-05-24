@@ -5,7 +5,7 @@
             <form>
                 <AnyInput class="mb-5" ph="enter login" v-model="login"/>
                 <AnyInput class="mb-5" ph="enter password" tp="password" v-model="password"/>
-                <AnyButton class="text-center">Submit</AnyButton>
+                <AnyButton type="submit" class="text-center">Submit</AnyButton>
             </form>
         </div>
         <div>

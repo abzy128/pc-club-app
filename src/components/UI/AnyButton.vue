@@ -1,20 +1,24 @@
 <template>
     <div>
-        <button class="p-3">
+        <button :type="type" class="p-3">
             <slot></slot>
         </button>
     </div>
 </template>
 <script>
 export default {
-    name: 'AnyButton'
+    name: 'AnyButton',
+
+    props: {
+        type: String
+    }
 }
 </script>
 <style>
 button{
     color: white;
     background-color: rgba(193, 191, 191, 0.635);
-    border: 1px solid black;
+    border: none;
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
