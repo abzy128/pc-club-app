@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen grid grid-cols-12">
+    <div class="grid grid-cols-12">
         <div>
             <NavBar :class="{'opacity-5' : settings}"/>
         </div>

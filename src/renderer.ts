@@ -41,3 +41,5 @@ components.forEach(element => {
 });
 
 app.use(pinia).use(router).mount('#app');
+
+export default exec

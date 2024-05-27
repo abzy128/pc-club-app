@@ -29,7 +29,6 @@ export const useNavStatusStore = defineStore("NavStatusStore", () => {
     }
 
     function actSettings(){
-        console.log("done")
         settings['value'] = !settings['value'];
     }
 

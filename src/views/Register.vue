@@ -12,7 +12,8 @@
 import RegisterBox from '../components/RegisterBox.vue'
 
 export default {
-    components:{
+    components:
+    {
         RegisterBox
     }
 }

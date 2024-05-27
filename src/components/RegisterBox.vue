@@ -6,7 +6,14 @@
                 <AnyInput class="mb-5" ph="enter your login" v-model="login"/>
                 <AnyInput class="mb-5" ph="enter password" tp="password" v-model="password"/>
                 <AnyInput class="mb-5" ph="repeat password" tp="password" v-model="password_r"/>
-                <AnyButton @click.prevent="createAccount" type="submit" class="text-center">Proceed</AnyButton>
+                <AnyButton @click.prevent="password == password_r ? createAccount() : errors.push({'code':'error', 'message':'Repeat the password correctly'});" type="submit" class="text-center">Proceed</AnyButton>
+                <div v-if="errors.length">
+                    <div v-for="error in errors" :key="error.code">
+
+                        <p class="text-center text-red-600">{{error.message}}</p>
+                    </div>
+                    
+                </div>
             </form>
         </div>
         <div class="mt-4">
@@ -18,26 +25,36 @@
 </template>
 <script lang="ts">
 import {ref} from 'vue'
+import { useRouter } from "vue-router";
+
 export default {
 
     setup(){
-        let login = ref(), password = ref(), password_r = ref(), response;
+        let login = ref(), password = ref(''), password_r = ref(''), errors = ref([]), response, default_link = 'https://abzy-server:5001/api/auth/register';
 
-        async function createAccount(data:{username: string, password : string }){
-            response = await fetch('https://abzy-server:5001/api/auth/register', {
+        const router:any = useRouter();
+
+        async function createAccount(){
+            let uri = default_link + `?Username=${login['value']}&Password=${password['value']}`;
+            try {
+                response = await fetch(uri, {
                 method : 'POST',
-                mode: "cors",
-                body : JSON.stringify(data),
-            });
+            }).then(async (res) => {router.push('/login');return await res.json();}).catch((e) => {console.log(e); errors['value'].push({'code' : '409', 'message' : 'Already exists'});return e}); 
 
-            console.log(response)
-            return await response.json();
+            } catch(err) {
+                console.log('failed')
+                return await err
+            }
+            
         }
+
+        
 
         return {
             login,
             password,
             password_r,
+            errors,
             createAccount
         }
     }
