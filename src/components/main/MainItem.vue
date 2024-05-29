@@ -1,6 +1,6 @@
 <template>
-    <div @click="openApp(app.path)" style="width:250px;height:400px" class=" mx-3">
-        <img :src="app.link" width="250px" height="320px" :alt="app.name">
+    <div @click="openApp(app.path)" style="width:250px;height:400px" class="my-7">
+        <img :src="app.banner" width="250px" height="320px" :alt="app.name">
         <p class="text-center text-4xl mt-3">{{app.name}}</p>
     </div>
 </template>

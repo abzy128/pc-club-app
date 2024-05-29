@@ -1,15 +1,14 @@
 <template>
-    <div class="grid grid-cols-12">
+    <div class="grid grid-cols-12" :class="{'opacity-5' : settings}">
         <div>
-            <NavBar :class="{'opacity-5' : settings}"/>
+            <NavBar/>
         </div>
         <div class="col-span-11">
-            <MainForm :class="{'opacity-5' : settings}"/>
-
-            <div v-if="settings">
-                <SettingsWindow/>
-            </div>
+            <MainForm/>
         </div>
+    </div>
+    <div v-if="settings">
+        <SettingsWindow/>
     </div>
 </template>
 <script>
@@ -30,6 +29,7 @@ export default {
     let NavStatusStore = useNavStatusStore();
 
     let {settings} = storeToRefs(NavStatusStore);
+
 
     return {settings}
 }

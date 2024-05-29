@@ -5,8 +5,11 @@
             <form>
                 <AnyInput class="mb-5" ph="enter login" v-model="login"/>
                 <AnyInput class="mb-5" ph="enter password" tp="password" v-model="password"/>
-                <AnyButton @click.prevent="loginAcc" type="submit" class="text-center">Submit</AnyButton>
+                <AnyButton @click.prevent="async() => {await newUserToken(login, password) ? this.$router.push('/') : error_status = true}" type="submit" class="text-center">Submit</AnyButton>
             </form>
+        </div>
+        <div v-if="error_status">
+            <p class="text-red-600 text-center mb-1">Login Failed</p>
         </div>
         <div>
             <RouterLink to="/register" class="mt-2 text-center brightness-50">
@@ -17,28 +20,22 @@
 </template>
 <script>
 import {ref} from 'vue'
+import { useUserTokenStore } from '../store/UserTokenStore';
+
 export default {
 
     setup(){
-        let login = ref(), password = ref(), response, default_link = 'https://abzy-server:5001/api/auth/login';
+        let login = ref(), password = ref(), error_status = ref(false);
 
-        async function loginAcc(){
-            try{
-            let uri = default_link + `?Username=${login['value']}&Password=${password['value']}`
-            response = fetch(uri, {
-                method : 'POST',
-            }).then(async (res) => {return await res.text();}).catch((e) => {console.log(e)})
-            } catch(e){
-                console.log(e)
-            }
+        let UserTokenStore = useUserTokenStore();
 
-            console.log(await response)
-        }
+        const {newUserToken} = UserTokenStore;
         
         return {
             login,
             password,
-            loginAcc
+            error_status,
+            newUserToken,
         }
     }
 }
