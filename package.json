@@ -45,7 +45,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "pinia": "^2.1.7",
     "postcss": "^8.4.38",
-    "undici": "^6.18.1",
+    "undici": "^6.19.2",
     "vue-router": "4"
   }
 }
