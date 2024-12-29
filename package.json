@@ -47,5 +47,6 @@
     "postcss": "^8.4.38",
     "undici": "^6.19.2",
     "vue-router": "4"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }
